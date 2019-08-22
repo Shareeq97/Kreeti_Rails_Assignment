@@ -1,0 +1,35 @@
+<%=link_to "Back" , home_index_path %>
+<h1> Index page for Employees </h1>
+<p>
+	<%= form_tag(employees_search_path, method: :get) do %>
+		<label> Search:</label>
+	 	<%= text_field_tag "search", nil, placeholder: "Search by name or email...",:size => "35%" %>
+	 	<%= submit_tag "Search !" %>
+	 <% end %>
+
+</p>
+
+<div>
+	<% if @results.present? %>
+		<h2> <%= pluralize(@results.count,"result") %> matched your search query </h2>
+		<ul>
+			<% @results.each do |employee| %>
+				<li>
+				<strong> Name: </strong> <%= link_to  employee.name,employee_path(employee) %>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
+
+<br>
+<%=button_to "Create New Employee", new_employee_path, method: :get %> 
+
+<h1><strong> Employees </strong></h1>	
+<ol>
+	<% @employees.each do |employee| %>
+		<li>
+			<%= link_to  employee.name,employee_path(employee) %>
+		</li>
+	<% end %>
+</ol>

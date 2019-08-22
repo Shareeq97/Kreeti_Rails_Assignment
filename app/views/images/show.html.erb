@@ -1,0 +1,22 @@
+<%=link_to "Back" , images_path %>
+<div>
+	<% if @image.errors.any? %>
+		<div> <%= pluralize(@employee.errors.count,"error") %> prevented this form from submission </div>
+		<ul>
+			<% @image.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
+<br>
+
+<h1> Image: </h1>
+<p style="margin-left: 40px"> 
+	<strong> Title: </strong> <%= @image.title %> 
+	<br>
+	<%= image_tag @image.image.url(:large) %> 	
+</p>
+<%=button_to "Edit Image", edit_image_path(@image) , method: :get%>
+&ensp;
+<%=button_to "Delete Image", image_path(@image), method: :delete, data: { confirm: "Are you sure ?" } %>

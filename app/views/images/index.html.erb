@@ -1,0 +1,17 @@
+<%=link_to "Back" , home_index_path %>
+
+<h1> Index page for Images Uploading </h1>
+
+
+<br>
+
+<%=button_to "Upload New Image", new_image_path, method: :get %> 
+
+<h1><strong> Images </strong></h1>
+<ol>
+	<% @images.each do |image| %>
+		<li>
+			 <%= link_to  image.image_file_name,image_path(image) %>
+		</li>
+	<% end %>
+</ol>

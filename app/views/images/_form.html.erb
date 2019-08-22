@@ -1,0 +1,22 @@
+<div>
+	<% if @image.errors.any? %>
+		<div> <%= pluralize(@image.errors.count,"error") %> prevented this form from submission </div>
+		<ul>
+			<% @image.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
+
+<%= form_for @image, html: { multipart: true} do |f| %>
+	<p>
+		<%= f.label :title %> 
+		<%= f.text_field :title %>
+	</p>
+	<p>
+		<%= f.label :image %> 
+		<%= f.file_field :image %>
+	</p>
+	<%= f.submit %>
+<% end %>

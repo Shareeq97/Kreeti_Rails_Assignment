@@ -1,0 +1,38 @@
+<%=link_to "Back" , home_index_path %>
+
+<h1> Index page for Students </h1>
+
+
+<p>
+	<%= form_tag(students_search_path, method: :get) do %>
+		<label> Search:</label>
+	 	<%= text_field_tag "search", nil, placeholder: "Search by name or email...",:size => "35%" %>
+	 	<%= submit_tag "Search !" %>
+	 <% end %>
+
+</p>
+
+<div>
+	<% if @results.present? %>
+		<h2> <%= pluralize(@results.count,"result") %> matched your search query </h2>
+		<ul>
+			<% @results.each do |student| %>
+				<li>
+				<strong> Name: </strong> <%= link_to  student.name,student_path(student) %>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
+
+<br>
+<%=button_to "Create New Student", new_student_path, method: :get %> 
+
+<h1><strong> Students </strong></h1>
+<ol>
+	<% @students.each do |student| %>
+		<li>
+			<%= link_to  student.name,student_path(student) %>
+		</li>
+	<% end %>
+</ol>

@@ -1,0 +1,14 @@
+    <p>
+    	<h2> Data of first 50 Students: </h2>
+
+    	<ul>
+    		<% Student.order("name").limit(50).each do |student| %>
+    			<li>
+    			 <strong> Name: </strong> <%= student.name %><br>
+    			 <strong> Email: </strong> <%= student.email %><br>
+                 <strong> Phone: </strong> <%= student.phone_number %><br>
+
+    			</li>
+    		<% end %>
+    	</ul>
+    </p>

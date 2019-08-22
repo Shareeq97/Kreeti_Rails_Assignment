@@ -1,0 +1,14 @@
+<%=link_to "Back" , employees_path %>
+<br>
+
+<h1> Employee data: </h1>
+<p style="margin-left: 40px"> 
+	<strong> Name: </strong> <%= @employee.name %> 
+	<br>
+	<strong> Email: </strong> <%= @employee.email %> 
+	<br>
+	<strong> Phone: </strong> <%= @employee.phone_number %> 	
+</p>
+<%=button_to "Edit Details", edit_employee_path(@employee) , method: :get%>
+&ensp;
+<%=button_to "Delete Employee", employee_path(@employee), method: :delete, data: { confirm: "Are you sure ?" } %>

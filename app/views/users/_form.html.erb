@@ -1,0 +1,27 @@
+<div>
+	<% if @user.errors.any? %>
+		<div> <%= pluralize(@user.errors.count,"error") %> prevented this form from submission </div>
+		<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
+
+
+<%= form_for @user do |f| %>
+	<p>
+		<%= f.label :name %> 
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :email %> 
+		<%= f.text_field :email %>
+	</p>
+	<p>
+		<%= f.label :phone_number %> 
+		<%= f.text_field :phone_number %>
+	</p>
+	<%= f.submit %>
+<% end %>

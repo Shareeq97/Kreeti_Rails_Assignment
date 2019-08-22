@@ -1,0 +1,14 @@
+<%=link_to "Back" , students_path %>
+<br>
+
+<h1> Student data: </h1>
+<p style="margin-left: 40px"> 
+	<strong> Name: </strong> <%= @student.name %> 
+	<br>
+	<strong> Email: </strong> <%= @student.email %> 
+	<br>
+	<strong> Phone: </strong> <%= @student.phone_number %> 	
+</p>
+<%=button_to "Edit Details", edit_student_path(@student) , method: :get%>
+&ensp;
+<%=button_to "Delete Student", student_path(@student), method: :delete, data: { confirm: "Are you sure ?" } %>
